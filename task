@@ -1,0 +1,88 @@
+
+package javaapplication4;
+import java.util.Scanner;
+/**
+ *
+ * @author Ahmed Khairullah
+ */
+
+public class JavaApplication4 {
+    
+public interface staff{
+    void get_salary();
+    void GetYearsOfWork();
+}
+
+public class teaching_assistant implements staff 
+{
+
+        @Override
+        public void get_salary() {
+            System.out.println("my salary is");
+        }
+
+        @Override
+        public void GetYearsOfWork() {
+          System.out.println("my years in work is");
+        }
+    
+}
+
+
+public class Doctor implements staff 
+{
+
+        @Override
+        public void get_salary() {
+            System.out.println("my salary is");
+        }
+
+        @Override
+        public void GetYearsOfWork() {
+          System.out.println("my years in work is");
+        }
+    
+}
+
+
+public static class memberFactory
+{
+    public staff GetStaff( String staffName){
+        String name = staffName.toLowerCase();
+        if (name=="teaching assistant")
+            return new teaching_assistant();
+        else if (name == "doctor") 
+            return new Doctor();
+        else 
+            return null;
+        /*switch(name){
+            case "teaching assistant":
+                return new teaching_assistant();
+            case "doctor":
+                return new Doctor();
+            default :
+                return null;*/
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("please mr, can you enter your staff's name ? ");
+        String staffname = sc.nextLine();
+        
+        memberFactory member = new memberFactory();
+        staff st = member.GetStaff(staffname);
+        st.GetYearsOfWork();
+        st.get_salary();
+        
+    }
+
+
+
+
+}
+
+
+
+
+
